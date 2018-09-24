@@ -219,6 +219,9 @@ class Line(object):
         """
         self.start = start.clone()
         self.end = end.clone()
+        self.delta_y = self.end.y - self.start.y
+        self.delta_x = self.end.x - self.start.x
+        self.count = 0
         # --------------------------------------------------------------
         # DONE: 3.
         #   a. READ the above specification, including the Example.
@@ -328,6 +331,7 @@ class Line(object):
         Type hints:
           :rtype: Line
         """
+        self.count = self.count+ 1
         return Line(self.start, self.end)
         # --------------------------------------------------------------
         # DONE: 4.
@@ -362,8 +366,14 @@ class Line(object):
             line1.reverse()
             print(line1 == line2)    # Should now print: True
         """
+
+        temp = self.start
+        self.start = self.end
+        self.end = temp
+        return Line(self.start, self.end)
+
         # --------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -398,8 +408,13 @@ class Line(object):
         Type hints:
           :rtype: float
         """
+
+        if(self.delta_x==0):
+            return math.inf
+        return (self.delta_y/self.delta_x)
+
         # --------------------------------------------------------------
-        # TODO: 6.
+        # DONE: 6.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -431,8 +446,9 @@ class Line(object):
         Type hints:
           :rtype: float
         """
+        return math.sqrt(self.delta_x**2 + self.delta_y**2)
         # --------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -471,8 +487,9 @@ class Line(object):
         Type hints:
           :rtype: int:
         """
+        return self.count
         # --------------------------------------------------------------
-        # TODO: 8.
+        # DONE: 8.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -505,8 +522,18 @@ class Line(object):
           :type  other_line: Line
           :rtype: Line:
         """
+        sum_start_x = self.start.x + other_line.start.x
+        sum_start_y = self.start.y + other_line.start.y
+
+        sum_end_x = self.end.x + other_line.end.x
+        sum_end_y = self.end.y + other_line.end.y
+
+        sum_start = Point(sum_start_x, sum_start_y)
+        sum_end = Point(sum_end_x, sum_end_y)
+
+        return Line(sum_start, sum_end)
         # --------------------------------------------------------------
-        # TODO: 9.
+        # DONE: 9.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -539,8 +566,18 @@ class Line(object):
           :type  other_line: Line
           :rtype: Line:
         """
+        dif_start_x = self.start.x - other_line.start.x
+        dif_start_y = self.start.y - other_line.start.y
+
+        dif_end_x = self.end.x - other_line.end.x
+        dif_end_y = self.end.y - other_line.end.y
+
+        dif_start = Point(dif_start_x, dif_start_y)
+        dif_end = Point(dif_end_x, dif_end_y)
+
+        return Line(dif_start, dif_end)
         # --------------------------------------------------------------
-        # TODO: 10.
+        # DONE: 10.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
