@@ -328,8 +328,9 @@ class Line(object):
         Type hints:
           :rtype: Line
         """
+        return Line(self.start, self.end)
         # --------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
