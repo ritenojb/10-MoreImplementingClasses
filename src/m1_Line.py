@@ -603,8 +603,11 @@ class Line(object):
         Type hints:
           :rtype: Point
         """
+        mid_x = (self.end.x + self.start.x)/2
+        mid_y = (self.end.y + self.start.y)/2
+        return Point(mid_x, mid_y)
         # --------------------------------------------------------------
-        # TODO: 11.
+        # DONE: 11.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -639,6 +642,10 @@ class Line(object):
           :type  line2: Line
           :rtype: bool
         """
+        if(self.slope() == line2.slope()):
+            return True
+        else:
+            return False
         # --------------------------------------------------------------
         # TODO: 12.
         #   a. READ the above specification, including the Example.
